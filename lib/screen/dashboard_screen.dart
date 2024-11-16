@@ -115,7 +115,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     }
   }
 
-
+  // Update data to the database
   Future<void> updateData(int id) async {
     List<Denomination> denominationList = _buildDenominations().map((denom) {
       return Denomination(
@@ -151,6 +151,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     }
   }
 
+  // Clear data in screen
   void clearScreen(){
     setState(() {
       for (var controller in controllers) {
@@ -666,23 +667,4 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
 }
 
-
-/*
-        Expanded(
-          child: TextField(
-            controller: controllers[index],
-            keyboardType: TextInputType.number,
-            style: TextStyle(color: Colors.white),
-            decoration: InputDecoration(
-              labelText: 'Count',
-              labelStyle: TextStyle(color: Colors.white70),
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.blue),
-              ),
-            ),
-            onChanged: (value) => _updateAmount(index, value),
-          ),
-        ),
-
-         */
 
