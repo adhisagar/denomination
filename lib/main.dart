@@ -1,14 +1,11 @@
 import 'package:denomination/screen/dashboard_screen.dart';
+import 'package:denomination/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() async{
-  await init();
   runApp(const MyApp());
 }
 
-Future<void> init()async{
-  await Future.delayed(const Duration(seconds: 2));
-}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -24,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const DashboardScreen(),
+      home: const SplashScreen(),
     );
   }
 }

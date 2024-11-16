@@ -83,6 +83,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   // Save data to the database
   Future<void> saveData() async {
+
     List<Denomination> denominationList = _buildDenominations().map((denom) {
       return Denomination(
         id: 0,
@@ -113,6 +114,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
         SnackBar(content: Text('Failed to Save Data: $e')),
       );
     }
+
+    FocusScope.of(context).unfocus();
+
   }
 
   // Update data to the database
@@ -126,6 +130,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         summaryId: 0,
       );
     }).toList();
+
 
     try {
       await _dbHelper.updateSummaryAndDenominations(
@@ -149,6 +154,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         SnackBar(content: Text('Failed to Update Data: $e')),
       );
     }
+    FocusScope.of(context).unfocus();
   }
 
   // Clear data in screen
@@ -177,6 +183,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         type: ExpandableFabType.up,
         childrenAnimation: ExpandableFabAnimation.rotate,
         distance: 60,
+
         openButtonBuilder: DefaultFloatingActionButtonBuilder(
           child: SizedBox(
             height: 18,
@@ -195,16 +202,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
           backgroundColor: Colors.blue,
           shape: const CircleBorder(),
         ),
+
         overlayStyle: ExpandableFabOverlayStyle(
           color: Colors.black.withOpacity(0.1),
-
         ),
         children:  [
           InkWell(
             onTap: (){
               setState(() {
-
+                FocusScope.of(context).unfocus();
                 clearScreen();
+
                 Helper().showToast(context, 'Data Cleared Successfully!');
               });
             },
@@ -234,6 +242,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
           InkWell(
             onTap: (){
+              FocusScope.of(context).unfocus();
               saveDialog(context);
             },
             child: Row(
@@ -476,6 +485,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         style: TextStyle(color: Colors.white),
                         maxLines: 2,
                         maxLength: 40,
+                        onTapOutside: (cont){
+                          FocusScope.of(context).unfocus();
+                        },
                         decoration: InputDecoration(
                           hintText: 'Fill your Remarks(if any)',
                           hintStyle: TextStyle(color: Colors.grey,fontSize: 12),
@@ -543,7 +555,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
             GestureDetector(
               onTap: (){
-
+                FocusScope.of(context).unfocus();
                 Navigator.pop(context);
 
               },
@@ -558,6 +570,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             GestureDetector(
               onTap: ()async{
+                FocusScope.of(context).unfocus();
                 if(fetchedId == 0){
                   await saveData();
                 }else{

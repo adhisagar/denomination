@@ -44,6 +44,9 @@ dependencies:
   vocsy_esys_flutter_share: ^1.0.2
   fluttertoast: ^8.2.8
   flutter_native_splash: any
+  flutter_bloc: ^8.1.6
+  equatable: ^2.0.5
+  flutter_animate: ^4.5.0
 
 dev_dependencies:
   flutter_test:
